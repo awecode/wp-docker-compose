@@ -5,16 +5,16 @@ services:
     #image: mysql:8.0.27
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - db_data:/var/lib/mysql
+      - wp_db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpasswordchangeme
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpresspasswordchangeme
-    expose:
-      - 3306
-      - 33060
+    ports:
+      - "3306:3306"
+      - "33060:33060"
 
   wordpress:
     image: wordpress:6.4-php8.2-apache
@@ -32,4 +32,4 @@ services:
       - db
 
 volumes:
-  db_data:
+  wp_db_data:
