@@ -30,6 +30,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
     depends_on:
       - db
+    command: bash -c "a2enmod rewrite && apache2-foreground"
 
 volumes:
   wp_db_data:
