@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mariadb:10.11
+    # If you really want to use MySQL, uncomment the following line
+    #image: mysql:8.0.27
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasswordchangeme
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpresspasswordchangeme
+    expose:
+      - 3306
+      - 33060
+
+
+volumes:
+  db_data:
