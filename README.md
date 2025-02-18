@@ -24,7 +24,7 @@ cp .env.example .env
 
 3. Copy or clone your wordpress project to the `app` folder.
 
-4. If you have a database dump, place it in the root of the project and name it `dump.sql`.
+4. If you have a database dump, place it in the `wp` folder and name it `dump.sql`.
 
 5. Initialize the services (required for db import):
 
