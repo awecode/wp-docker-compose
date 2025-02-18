@@ -5,10 +5,13 @@
 }
 
 # Main site configuration
-{$DOMAIN} {
-    reverse_proxy wordpress:80
+:80 {
+    # Forward the original Host header to WordPress
+    reverse_proxy wordpress:80 {
+        header_up Host {host}
+    }
     encode gzip
     log {
         output stdout
     }
-} 
+}
