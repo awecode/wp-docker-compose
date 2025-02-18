@@ -17,14 +17,27 @@ services:
     image: wordpress:6.4-php8.2-apache
     volumes:
       - ./app:/var/www/html
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     restart: always
     env_file:
       - .env
     depends_on:
       - db
     command: bash -c "a2enmod rewrite && apache2-foreground"
+
+  caddy:
+    image: caddy:2.7-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    depends_on:
+      - wordpress
 
 volumes:
   wp_db_data:

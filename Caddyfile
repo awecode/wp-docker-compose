@@ -1,0 +1,13 @@
+{
+    # Global options block
+    admin off  # Disable admin interface
+}
+
+# Main site configuration
+{$DOMAIN} {
+    reverse_proxy wordpress:80
+    encode gzip
+    log {
+        output stdout
+    }
+} 
