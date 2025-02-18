@@ -1,6 +1,7 @@
 {
     # Global options block
     admin off  # Disable admin interface
+    auto_https off # Disable HTTPS since Cloudflare handles it
 }
 
 # Main site configuration
