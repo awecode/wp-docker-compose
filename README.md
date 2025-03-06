@@ -44,16 +44,16 @@ vim app/wp-config.php
 ```
 
 ```php
-define( 'DB_NAME', getenv('WORDPRESS_DB_NAME') );
+define( 'DB_NAME', getenv('MYSQL_DATABASE') );
 
 /** Database username */
-define( 'DB_USER', getenv('WORDPRESS_DB_USER') );
+define( 'DB_USER', getenv('MYSQL_USER') );
 
 /** Database password */
-define( 'DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') );
+define( 'DB_PASSWORD', getenv('MYSQL_PASSWORD') );
 
 /** Database hostname */
-define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') );
+define( 'DB_HOST', getenv('MYSQL_HOST') );
 ```
 
 8. Restart docker containers to reflect the changes
