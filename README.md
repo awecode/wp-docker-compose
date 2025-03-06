@@ -61,27 +61,7 @@ define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') );
 docker compose restart
 ```
 
-
-9. If there is a redirect loop because Wordpress still thinks it is not on https, force Wordpress to infer that it is https
-```bash
-vim app/wp-config.php
-```
-
-```php
-if (
-    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-    $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'
-) {
-    $_SERVER['HTTPS'] = 'on';
-}
-```
-
-10. Restart docker containers to reflect the changes
-```bash
-docker compose restart
-```
-
-11. Create an admin user
+9. Create an admin user
 ```bash
 docker exec -it wp-db-1 mysql -uwordpress -p"wordpresspasswordchangeme"
 ```
