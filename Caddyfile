@@ -6,10 +6,12 @@
 
 # Main site configuration
 :80 {
-    # Forward the original Host header to WordPress
     reverse_proxy wordpress:80 {
-        header_up Host {host}
-    }
+        header_up {host}
+
+        # Let WordPress know this was originally an HTTPS request
+        header_up X-Forwarded-Proto "https"
+}
     encode gzip
     log {
         output stdout
