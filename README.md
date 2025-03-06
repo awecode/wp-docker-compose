@@ -63,7 +63,7 @@ docker compose restart
 
 
 9. If there is a redirect loop because Wordpress still thinks it is not on https, force Wordpress to infer that it is https
-```
+```bash
 vim app/wp-config.php
 ```
 
@@ -82,9 +82,11 @@ docker compose restart
 ```
 
 11. Create an admin user
-```
+```bash
 docker exec -it wp-db-1 mysql -uwordpress -p"wordpresspasswordchangeme"
 ```
+
+```sql
 USE wordpress;
 
 INSERT INTO wp_users 
@@ -102,3 +104,5 @@ INSERT INTO wp_usermeta
 VALUES 
   (LAST_INSERT_ID(), 'wp_user_level', '10');
 ```
+
+TODO: Move this to `import-db.sh`; read username, email and password from .env.
