@@ -84,4 +84,15 @@ VALUES
   (LAST_INSERT_ID(), 'wp_user_level', '10');
 ```
 
-TODO: Move this to `import-db.sh`; read username, email and password from .env.
+## TODO
+1. Move admin user creation to `import-db.sh`; read username, email and password from .env.
+2. Remove Caddy if https is not required.
+3. Fix permission for file creation in `wp-content/uploads`. Until permission is fixed, use this:
+```
+sudo chmod 777 wp-content/uploads
+sudo apt install acl
+setfacl -d -m u::rwx,g::rwx,o::rwx wp-content/uploads
+setfacl -m u::rwx,g::rwx,o::rwx wp-content/uploads
+setfacl -d -m u::rwx,g::rwx,o::rwx wp-content/uploads/2025
+setfacl -m u::rwx,g::rwx,o::rwx wp-content/uploads/2025
+```
