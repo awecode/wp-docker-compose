@@ -17,6 +17,7 @@ services:
     image: wordpress:6.4-php8.2-apache
     volumes:
       - ./app:/var/www/html
+      - wp_content:/var/www/html/wp-content
       # To let PHP infer that it is https
       - ./reverse-proxy.conf:/etc/apache2/conf-enabled/reverse-proxy.conf:ro
     expose:
@@ -28,6 +29,7 @@ services:
       - db
     command: bash -c "a2enmod rewrite && apache2-foreground"
 
+  #TODO Remove this in favor of Apache if automatic https is not required
   caddy:
     image: caddy:2.7-alpine
     restart: always
@@ -43,3 +45,4 @@ services:
 
 volumes:
   wp_db_data:
+  wp_content:

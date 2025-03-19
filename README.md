@@ -2,10 +2,9 @@
 
 This repository contains a Docker-based WordPress environment setup.
 
-## Prerequisites
+## TODO
 
-- Docker and Docker Compose installed on your system
-- Basic understanding of WordPress, Docker, and MySQL/MariaDB
+Remove Caddy if automatic https is not required
 
 ## Setup Instructions
 
