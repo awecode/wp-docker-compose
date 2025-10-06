@@ -17,7 +17,7 @@ services:
     image: wordpress:6.4-php8.2-apache
     volumes:
       - ./app:/var/www/html
-      - ./wp-content:/var/www/html/wp-content
+      - ./app/wp-content:/var/www/html/wp-content
       # To let PHP infer that it is https
       - ./reverse-proxy.conf:/etc/apache2/conf-enabled/reverse-proxy.conf:ro
     expose:
